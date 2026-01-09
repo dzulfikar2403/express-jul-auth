@@ -31,13 +31,12 @@ export const postUser = async (input: Omit<TCreateUserSchema["body"],"confirmPas
     
     const body = {
         id: nanoid(),
-        ...input,
-        verificationCode: nanoid(),  
+        ...input,  
         password: hashPw,
     }
     
     try {
-        const postUser = await prisma.user.create({data:body,select:{id:true,email:true,verificationCode:true}});
+        const postUser = await prisma.user.create({data:body,select:{id:true,email:true}});
         
         return {msg: "successfully create user",data:postUser}
     } catch (error) { 

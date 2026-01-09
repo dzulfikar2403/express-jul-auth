@@ -20,8 +20,6 @@ model User {
   lastName          String
   password          String
   isVerified        Boolean        @default(false)
-  verificationCode  String?
-  passwordResetCode String?
   refreshTokens     RefreshToken[]
   createdAt         DateTime       @default(now())
 }
